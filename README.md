@@ -1,49 +1,72 @@
 # Macompta - Ecritures
 
-Le but de ce projet et de créer une application web PHP de gestion d'écritures comptable.
+Le but de ce projet est de créer des APIs dans le cadre d'une application web PHP de gestion d'écritures comptables.
 
 ## Desciption
 
-Une écriture comptable et une transaction financière qui doit être en crédit ou en débit.
+Une écriture comptable est une transaction financière qui doit être en crédit ou en débit.
 
-Elle est principalement composée d'un montant, un libellé, une date, et un type d'opération.
+Elle est principalement composée d'un montant, d'un libellé, d'une date et d'un type d'opération.
 
-Il faudra créer une application web permettant de pouvoir gérer ces écritures sur le principe d'un CRUD (Create / Update / Delete).
+Chaque écriture est rattaché à un dossier.
 
-L'application devra démarrer sur la liste des écritures.
+Il faudra créer les APIs REST permettant de pouvoir gérer ces écritures sur le principe d'un CRUD (Create / Update / Delete).
 
-On devra pouvoir ajouter une nouvelle écriture.
+Il faudra en faire de même pour la ressource dossier.
 
-Dans la liste des écritures, on devra pouvoir modifier et supprimer une ligne.
+Elles devront être testées via POSTMAN ou équivalent.
+
+Un export des données POSTMAN devra être fourni pour pouvoir facilement exécuter les appels. (format POSTMAN, curl...)
 
 ## Prérequis
 
-* PHP 7
-* Symfony
+* PHP 7+
+* Symfony ou équivalent (SlimPHP*,  Laravel...)
 * MySQL
 * Git
+* Pas d'utilisation d'un ORM (utilisation de requêtes SQL natives)
+* Idéalement, respect des conventions PSR2. Fichier des rulesets joint. (voir l'outil phpcs pour plus de détail)
+
 
 Le candidat peut utiliser les outils de son choix pour le développement en dehors des prérequis.
+
+nb: Pour SlimPHP, un skeleton de base utilisé en interne PEUT ETRE fourni.
+
+Mais l'idée est d'utiliser la plateforme que le candidat connait le mieux. Il ne s'agit pas de juger de la connaissance d'un framework.
 
 ## Points d'évaluation
 
 * Qualité du code
 * Robustesse des contrôles
 
-L'aspect visuel ne sera pas évalué, le choix ou non d'un framework d'UI (type Boostrap) est à l'appréciation du candidat.
+Il faudra travailler sur la branche main, et créer un commit pour chaque exercice: `git commit -m "Exercice 1: création de la table"`.
 
-Il faudra travailler sur la branche master, et créer un commit pour chaque exercice: `git commit -m "Exercice 1: création de la table"`.
+Une fois terminé, Il faudra zipper le projet final et l'envoyer par mail à epham@macompta.fr et à echartier@macompta.fr.
 
-Une fois terminé, Il faudra zipper le projet final et l'envoyer par mail à jveillet@macompta.fr et epham@macompta.fr.
+## Implémention
+
+L'uuid n'est pas forcément connu à ce stade. Il s'agit d'un format pour gérer les identifiants (comme un auto-increment) mais avec un format spécifique. 
+Il peut être gérer comme une string de 36 caractères au niveau base. Au niveau "usage", cela se traite comme n'importe quel identiifiant.
+
+Pour la gestion des uuid, le package ramsey/uuid (https://github.com/ramsey/uuid) peut être utiliser : 
+
+ use Ramsey\Uuid\Uuid;
+ $uuid = Uuid::uuid4();
+
+
+
+Toutes les opérations sont en général rattachés à un dossier. Il faut donc que les endpoints commencent par identifiier le dossier.
+
+
 
 ## Exercice 1
 
 Créer la table d'écritures, et pouvoir lancer une migration pour générer cette table.
 
-La table d'écritures et composée des champs suivants:
+La table d'écritures est composée des champs suivants:
 
 | Nom du champ | Type | description |
-|`id` | PRIMARY KEY unsigned NOT NULL AUTO_INCREMENT | Identifiant de la ligne |
+|`uuid` | PRIMARY KEY  VARCHAR(36)| uuid de l'écriture |
 |`label` | VARCHAR 255 NOT NULL DEFAULT '' | Libellé de l'écriture |
 |`date` | date NOT NULL DEFAULT '0000-00-00' | Date de l'écriture |
 |`type` | Enum "C", "D" | Type d'opération "C" => Crédit, "D" => Débit |
@@ -51,92 +74,116 @@ La table d'écritures et composée des champs suivants:
 |`created_at` | timestamp NULL DEFAULT current_timestamp() | Date de création |
 |`updated_at` | timestamp NULL DEFAULT NULL ON UPDATE current_timestamp() | Date  de modification |
 
+
+La table dossiers est composée des champs suivants:
+
+| Nom du champ | Type | description |
+|`uuid` | PRIMARY KEY  VARCHAR(36)| uuid du dossier |
+|`login` | VARCHAR 255 NOT NULL DEFAULT | identifiant de connexion |
+|`password` | VARCHAR(255) NOT NULL | mdp du dossier
+|`name` | nom du dossier
+|`created_at` | timestamp NULL DEFAULT current_timestamp() | Date de création |
+|`updated_at` | timestamp NULL DEFAULT 
+
+Créé une clé étrangère dans la table ecriutres(dossier_uuid) vers dosssiers(uuid) avec UPDATE RESTRICT et DELETE CASCADE.
+
 ## Exercice 2
 
-Afficher la page de liste des écritures
+Création d'un endpoint pour récupérer la liste des écritures pour UN dossier sous ce format
 
-Créer une page web qui va accueillir la liste des écritures (vide pour le moment).
+GET /dossiers/{uuid}/ecritures
+Reponse
 
-Prévoir le tableau qui va afficher les données.
-
-Ajouter un bouton "nouveau" pour permettre de créer une nouvelle écriture.
+200
+{
+	"items" => [
+		{ 
+			
+			label,
+			[...]
+		},
+		{
+			label,
+			[...]
+		}
+		
+	]
+}
 
 ## Exercice 3
 
-Créer la page de création d'une écriture, avec un formulaire qui va permettre de saisir une écriture.
+Création d'un endpoint pour l'ajout d'une ecriture DANS UN dossier.
 
-On doit pouvoir aller sur cette page en cliquant sur le bouton "nouveau" sur la page de la liste des écritures.
+POST /dossiers/{uuid}/ecritures
+Body
+{
+	"label": "xxx",
+	"date" : "dd/mm/yyyy",
+	[...]
+}
 
-* Un champ de saisie pour le libellé
-* Une liste de sélection pour le type.
-* Un champ de saisie pour le montant
-* Un champ pour la date de saisie.
 
-On devra avoir 2 boutons à la fin du formulaire:
 
-* "Enregistrer": enregistre les données et retour à la liste des écritures.
-* "Annuler": n'enregistre pas et retour à la liste des écritures.
+Reponse 201
+{
+	"uuid": "uuid qui vient d'être généré"
+}
 
 **Contraintes de validation:**
 
 Le montant ne doit pas être négatif.
 la date saisie doit être une date valide.
 
-Si les contraintes de validation ne sont pas respectée, afficher une message d'erreur à l'enregistrement.
 
 ## Exercice 4
 
-Modifier la page d'accueuil pour qu'elle affiche les écritures enregistrées.
+Création d'un endpoint pour modifier une ecriture.
+Dans le body devra être transmis systématiquement TOUS les champs. Pas seulement ceux qui doivent être modifiés.
 
-Afficher un bouton de modification et de suppression pour chaque ligne.
+PUT /dossiers/{uuid}/ecritures/{uuid}
+Body
+{
+	"uuid": "eee"
+	"label": "xxx"
+	[...]
+	""
+}
 
-## Exercice 5
 
-Créer la page qui permet de modifier une écriture.
-
-On doit pouvoir aller sur cette page en cliquant sur l'action "modifier" d'une ligne dans la liste des écritures.
-
-On doit pouvoir changer le montant, le libellé et la date.
-
-On doit avoir 2 boutons sur cette page:
-
-* "Enregistrer": enregistre la fiche et retour à la liste des écritures.
-* "Annuler": n'enregistre pas et retour à la liste des écritures.
+Reponse 204
 
 **Contraintes de validation:**
 
-Les même contraintes de validation s'applique que dans la création.
+Les mêmes contraintes de validation s'applique que dans la création.
 
-## Exercice 6
+## Exercice 5
 
-Dans la liste des écritures, quand on clique sur l'action de suppression d'une ligne, cela devra supprimer l'écriture et raffraichir la liste.
+Bon ben, pas de surpise, on supprime !
 
-## Exercice 7
+DELETE /dossiers/{uuid}/ecritures/{uuid}
 
-Ajouter un bouton de tri sur l'UI de la liste des écritures pour pouvoir trier par dates (croissantes).
-Même chose pour le type d'opérations ("C" et "D").
+Response 204.
 
-Exemple d'affichage trié:
+## Exercice 6,7,8,9
 
-| ecriture 1 | 2021-01-01 | 100.0  | 'C'
-| ecriture 2 | 2021-01-01 | 25.0   | 'D'
-| ecriture 3 | 2021-01-02 | 12.0   | 'C'
-| ecriture 4 | 2021-01-03 | 5000.0 | 'C'
+Même chose que pour écritures mais pour dossier : GET , POST, PUT, DELETE.
 
-etc..
+GET /dossiers/{uuid}
+POST /dossiers
+PUT /dossiers/{uuid}
+DELETE /dossiers/{uuid}
 
-## Bonus
 
-Si le temps le permet voici deux exercices supplémentaires, il ne rentreront pas dans l'évaluation.
+**Contraintes de validation:**
+login / password obligatoire
+un dossier avec ecritures ne peut être supprimer.
+login NON modifiale
 
-### Exercice 8
 
-Afficher 3 totaux en fin de liste des écritures:
+## Exercice 10
 
-* "Total": total global des montants des écritures.
-* "Total Crédit": total des montants des écritures en crédit (type "C").
-* "Total Débit": total des montants des écritures en débit (type "D").
+Endpoint pour récupérer la liste de TOUS les dossiers avec ses écritures.
 
-### Exercice 9
+Le format de sortie est à définir par le candidat mais doit être proche des deux endpoints GET précédent.
 
-Si le montant total en crédit et différent du montant total en débit, afficher le total global en rouge.
+La méthode pour récupérer les données devra être optimisé. S'il y a un grand nombre de données, cela devrait avoir peu d'impact sur la requete.

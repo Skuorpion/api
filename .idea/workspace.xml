@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="86083c11-8ff5-493d-9917-935a3650b385" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.coveralls.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.coveralls.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/api.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/CONTRIBUTING.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dependencies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/dependencies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/middleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/middleware.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/logs/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpstan.neon.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpstan.neon.dist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Actions/Action.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Actions/Action.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Actions/ActionError.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Actions/ActionError.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Actions/ActionPayload.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Actions/ActionPayload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Actions/User/ListUsersAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Actions/User/ListUsersAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Actions/User/UserAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Actions/User/UserAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Actions/User/ViewUserAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Actions/User/ViewUserAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Handlers/HttpErrorHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Handlers/HttpErrorHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Handlers/ShutdownHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Handlers/ShutdownHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Middleware/SessionMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Middleware/SessionMiddleware.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/ResponseEmitter/ResponseEmitter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/ResponseEmitter/ResponseEmitter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Settings/Settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Settings/Settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Settings/SettingsInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Settings/SettingsInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/DomainException/DomainException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/DomainException/DomainException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/DomainException/DomainRecordNotFoundException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/DomainException/DomainRecordNotFoundException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/User/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/User/UserNotFoundException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/User/UserNotFoundException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/User/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/User/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Infrastructure/Persistence/User/InMemoryUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Infrastructure/Persistence/User/InMemoryUserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Application/Actions/ActionTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Application/Actions/ActionTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Application/Actions/User/ListUserActionTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Application/Actions/User/ListUserActionTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Application/Actions/User/ViewUserActionTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Application/Actions/User/ViewUserActionTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Domain/User/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Domain/User/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Infrastructure/Persistence/User/InMemoryUserRepositoryTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Infrastructure/Persistence/User/InMemoryUserRepositoryTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="273dWuSDi5N2JCAyjlwvm0vesiT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="86083c11-8ff5-493d-9917-935a3650b385" name="Changes" comment="" />
+      <created>1648552738853</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648552738853</updated>
+      <workItem from="1648552740108" duration="1750000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
