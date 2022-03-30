@@ -206,4 +206,50 @@ return function (App $app) {
             return $response;
         }
     });
+
+    $app->post('/dossiers', function (Request $request, Response $response) {
+        $values = json_decode($request->getBody()->getContents());
+        $uuid = Uuid::uuid4();
+
+        if (!property_exists($values, 'login') || !property_exists($values, 'password')) {
+            $newResponse = $response->withStatus(400 );
+            return $newResponse;
+        }
+
+        $sql = 'INSERT INTO dossiers (
+                        uuid,
+                        login,
+                        password,
+                        name
+                    ) VALUES (
+                        :uuid,
+                        :login,
+                        :password,
+                        :name
+                    )';
+
+        try {
+            // Get DB Object
+            $db = new db();
+            // connect to DB
+            $db = $db->connect();
+
+            // query
+            $stmt = $db->prepare( $sql );
+            $stmt->bindParam(':uuid', $uuid);
+            $stmt->bindParam(':login', $values->login);
+            $stmt->bindParam(':password', $values->password);
+            $stmt->bindParam(':name', $values->name);
+            $stmt->execute();
+            $db = null;
+
+            $newResponse = $response->withStatus(201);
+            $newResponse->getBody()->write('{"' . $uuid . '": "uuid qui vient d\'être généré"}');
+            return $newResponse;
+        } catch (PDOException $e) {
+            // show error message as Json format
+            $response->getBody()->write('{"error": {"msg": ' . $e->getMessage() . '}');
+            return $response;
+        }
+    });
 };
