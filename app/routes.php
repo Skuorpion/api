@@ -138,4 +138,34 @@ return function (App $app) {
             return $response;
         }
     });
+
+    $app->delete('/dossiers/{uuidDossier}/ecritures/{uuidEcriture}', function (Request $request, Response $response) {
+        $dossier = $request->getAttribute('uuidDossier');
+        $ecriture = $request->getAttribute('uuidEcriture');
+
+        $sql = 'DELETE FROM ecritures WHERE uuid = :uuid AND dossier_uuid = :dossier_uuid';
+
+        try {
+            // Get DB Object
+            $db = new db();
+
+            // connect to DB
+            $db = $db->connect();
+
+            // query
+            $stmt = $db->prepare( $sql );
+            $stmt->bindParam(':uuid', $ecriture);
+            $stmt->bindParam(':dossier_uuid', $dossier);
+            $stmt->execute();
+            $db = null;
+
+            // print out the result as json format
+            $newResponse = $response->withStatus(204);
+            return $newResponse;
+        } catch (PDOException $e) {
+            // show error message as Json format
+            $response->getBody()->write('{"error": {"msg": ' . $e->getMessage() . '}');
+            return $response;
+        }
+    });
 };
