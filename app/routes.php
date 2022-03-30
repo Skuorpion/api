@@ -290,4 +290,67 @@ return function (App $app) {
             return $response;
         }
     });
+
+    $app->delete('/dossiers/{uuid}', function (Request $request, Response $response) {
+        $dossier = $request->getAttribute('uuid');
+        $values = json_decode($request->getBody()->getContents());
+
+        if (!property_exists($values, 'login') || !property_exists($values, 'password')) {
+            $newResponse = $response->withStatus(400 );
+            return $newResponse;
+        }
+
+        $sql = 'SELECT count(*) AS NbEcriture
+                FROM ecritures
+                WHERE uuid = :uuid';
+
+        try {
+            // Get DB Object
+            $db = new db();
+
+            // connect to DB
+            $db = $db->connect();
+
+            // query
+            $stmt = $db->prepare( $sql );
+            $stmt->bindParam(':uuid', $dossier);
+            $stmt->execute();
+            $NbEcriture = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $db = null;
+
+            if ($NbEcriture[0]->NbEcriture > 0) {
+                $newResponse = $response->withStatus(400 );
+                return $newResponse;
+            }
+
+        } catch (PDOException $e) {
+            // show error message as Json format
+            $response->getBody()->write('{"error": {"msg": ' . $e->getMessage() . '}');
+            return $response;
+        }
+
+        $sql = 'DELETE FROM dossiers WHERE uuid = :uuid';
+
+        try {
+            // Get DB Object
+            $db = new db();
+
+            // connect to DB
+            $db = $db->connect();
+
+            // query
+            $stmt = $db->prepare( $sql );
+            $stmt->bindParam(':uuid', $dossier);
+            $stmt->execute();
+            $db = null;
+
+            // print out the result as json format
+            $newResponse = $response->withStatus(204);
+            return $newResponse;
+        } catch (PDOException $e) {
+            // show error message as Json format
+            $response->getBody()->write('{"error": {"msg": ' . $e->getMessage() . '}');
+            return $response;
+        }
+    });
 };
