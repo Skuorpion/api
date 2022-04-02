@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="903cb362-e7a1-49a8-acb2-25e0fcca4fed" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Application/Actions/ActionTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Application/Actions/User/ListUserActionTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Application/Actions/User/ViewUserActionTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Domain/User/UserTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Infrastructure/Persistence/User/InMemoryUserRepositoryTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +101,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="//wsl$/Debian/home/valentin/devPhpLP/projets/callteaser" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -106,6 +116,8 @@
       <workItem from="1648560478378" duration="10837000" />
       <workItem from="1648649068998" duration="524000" />
       <workItem from="1648649660901" duration="2308000" />
+      <workItem from="1648813398509" duration="7558000" />
+      <workItem from="1648837160624" duration="9491000" />
     </task>
     <servers />
   </component>
